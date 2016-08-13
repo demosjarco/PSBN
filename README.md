@@ -6,4 +6,4 @@ If you have any problems with the app, simple close the app, remove it from mult
 <hr />
 Known Bugs
 ----------
-- Be sure to run pod install on the directory before first run
+- Be sure to run `pod install` on the directory before first run
