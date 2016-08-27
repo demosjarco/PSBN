@@ -1,0 +1,6 @@
+framework module Pods_PSBNTests {
+  umbrella header "Pods-PSBNTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
