@@ -15,6 +15,7 @@
 		174EFD9D1D714A4F00C22462 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174EFD9B1D714A4F00C22462 /* LaunchScreen.storyboard */; };
 		174EFDA81D714A4F00C22462 /* PSBNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EFDA71D714A4F00C22462 /* PSBNTests.swift */; };
 		174EFDB31D714A4F00C22462 /* PSBNUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174EFDB21D714A4F00C22462 /* PSBNUITests.swift */; };
+		17EB3AE31D73399A00CF4F22 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 17EB3AE21D73399A00CF4F22 /* GoogleService-Info.plist */; };
 		1ADF5540FB4A87D22944544A /* Pods_PSBNUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B86D521360FCC37CBE1CBE /* Pods_PSBNUITests.framework */; };
 		1B846762D7CBB63541430B41 /* Pods_PSBN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A99BE4EDF6853D1ED3C4F09 /* Pods_PSBN.framework */; };
 		AFF0050FA05E7E1CE2ED4CF2 /* Pods_PSBNTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AB92646317D6F7752469EF /* Pods_PSBNTests.framework */; };
@@ -54,6 +55,7 @@
 		174EFDB21D714A4F00C22462 /* PSBNUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSBNUITests.swift; sourceTree = "<group>"; };
 		174EFDB41D714A4F00C22462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174EFDC01D714B8700C22462 /* PSBN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PSBN.entitlements; sourceTree = "<group>"; };
+		17EB3AE21D73399A00CF4F22 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FADB79625503702411ED240 /* Pods-PSBNUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBNUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSBNUITests/Pods-PSBNUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3D678B1029DA6976AAFC24E2 /* Pods-PSBN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBN.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSBN/Pods-PSBN.release.xcconfig"; sourceTree = "<group>"; };
 		4A99BE4EDF6853D1ED3C4F09 /* Pods_PSBN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSBN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				174EFD961D714A4F00C22462 /* Main.storyboard */,
 				174EFD991D714A4F00C22462 /* Assets.xcassets */,
 				174EFD9B1D714A4F00C22462 /* LaunchScreen.storyboard */,
+				17EB3AE21D73399A00CF4F22 /* GoogleService-Info.plist */,
 				174EFD9E1D714A4F00C22462 /* Info.plist */,
 			);
 			path = PSBN;
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				174EFD9D1D714A4F00C22462 /* LaunchScreen.storyboard in Resources */,
+				17EB3AE31D73399A00CF4F22 /* GoogleService-Info.plist in Resources */,
 				174EFD9A1D714A4F00C22462 /* Assets.xcassets in Resources */,
 				174EFD981D714A4F00C22462 /* Main.storyboard in Resources */,
 			);
