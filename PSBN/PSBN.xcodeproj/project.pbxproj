@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		173B5F2C1D85CAD9008C8419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173B5F2B1D85CAD9008C8419 /* GoogleService-Info.plist */; };
 		178294EE1D85BAA200752D28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178294ED1D85BAA200752D28 /* AppDelegate.swift */; };
-		178294F01D85BAA200752D28 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178294EF1D85BAA200752D28 /* MasterViewController.swift */; };
-		178294F21D85BAA200752D28 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178294F11D85BAA200752D28 /* DetailViewController.swift */; };
 		178294F51D85BAA200752D28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178294F31D85BAA200752D28 /* Main.storyboard */; };
 		178294F71D85BAA200752D28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178294F61D85BAA200752D28 /* Assets.xcassets */; };
 		178294FA1D85BAA200752D28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178294F81D85BAA200752D28 /* LaunchScreen.storyboard */; };
 		178295051D85BAA200752D28 /* PSBNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178295041D85BAA200752D28 /* PSBNTests.swift */; };
 		178295101D85BAA200752D28 /* PSBNUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1782950F1D85BAA200752D28 /* PSBNUITests.swift */; };
+		17FBB2B81D85FFFB00C3D970 /* TheaterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FBB2B71D85FFFB00C3D970 /* TheaterList.swift */; };
+		17FBB2BA1D860A6D00C3D970 /* TheaterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17FBB2B91D860A6D00C3D970 /* TheaterEvent.swift */; };
 		26E34D76FAA201F2E58A298C /* Pods_PSBNTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C4C1DC254ECECF0539F0CB /* Pods_PSBNTests.framework */; };
 		60904F4ECA1527171EEFADD6 /* Pods_PSBNUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD41A55671D3D2E66A5B745B /* Pods_PSBNUITests.framework */; };
 		D3E884182FB0F08AA0FE30B8 /* Pods_PSBN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FAADBCC70CA2F775FF5F37 /* Pods_PSBN.framework */; };
@@ -45,8 +45,6 @@
 		173B5F2D1D85CC00008C8419 /* PSBN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PSBN.entitlements; sourceTree = "<group>"; };
 		178294EA1D85BAA200752D28 /* PSBN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSBN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178294ED1D85BAA200752D28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		178294EF1D85BAA200752D28 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		178294F11D85BAA200752D28 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		178294F41D85BAA200752D28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		178294F61D85BAA200752D28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		178294F91D85BAA200752D28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +55,8 @@
 		1782950B1D85BAA200752D28 /* PSBNUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSBNUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1782950F1D85BAA200752D28 /* PSBNUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSBNUITests.swift; sourceTree = "<group>"; };
 		178295111D85BAA200752D28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17FBB2B71D85FFFB00C3D970 /* TheaterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterList.swift; sourceTree = "<group>"; };
+		17FBB2B91D860A6D00C3D970 /* TheaterEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterEvent.swift; sourceTree = "<group>"; };
 		5B9C224C7DFC5A995C270184 /* Pods-PSBNUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBNUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSBNUITests/Pods-PSBNUITests.release.xcconfig"; sourceTree = "<group>"; };
 		63A71592B2CFE4362BEB2A71 /* Pods-PSBNTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBNTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSBNTests/Pods-PSBNTests.release.xcconfig"; sourceTree = "<group>"; };
 		B25A56C39E03AB2929436397 /* Pods-PSBNTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBNTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSBNTests/Pods-PSBNTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 			children = (
 				173B5F2D1D85CC00008C8419 /* PSBN.entitlements */,
 				178294ED1D85BAA200752D28 /* AppDelegate.swift */,
-				178294EF1D85BAA200752D28 /* MasterViewController.swift */,
-				178294F11D85BAA200752D28 /* DetailViewController.swift */,
+				17FBB2B71D85FFFB00C3D970 /* TheaterList.swift */,
+				17FBB2B91D860A6D00C3D970 /* TheaterEvent.swift */,
 				178294F31D85BAA200752D28 /* Main.storyboard */,
 				178294F61D85BAA200752D28 /* Assets.xcassets */,
 				178294F81D85BAA200752D28 /* LaunchScreen.storyboard */,
@@ -469,9 +469,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				178294F21D85BAA200752D28 /* DetailViewController.swift in Sources */,
-				178294F01D85BAA200752D28 /* MasterViewController.swift in Sources */,
 				178294EE1D85BAA200752D28 /* AppDelegate.swift in Sources */,
+				17FBB2BA1D860A6D00C3D970 /* TheaterEvent.swift in Sources */,
+				17FBB2B81D85FFFB00C3D970 /* TheaterList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
