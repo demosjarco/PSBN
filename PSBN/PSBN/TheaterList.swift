@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import AFNetworking
 
 class TheaterList: UITableViewController {
     override func viewDidLoad() {
