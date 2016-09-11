@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
             print("USER ID: " + user!.uid)
         })
-        let settings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         
