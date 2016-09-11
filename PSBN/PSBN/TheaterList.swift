@@ -16,6 +16,13 @@ class TheaterList: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        refresh(sender: self.refreshControl)
+    }
+    
+    @IBAction func refresh(sender: UIRefreshControl?) {
+        sender?.beginRefreshing()
+        sender?.endRefreshing()
     }
 
     // MARK: - Table view data source
