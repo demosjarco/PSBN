@@ -42,6 +42,7 @@
 		06FAADBCC70CA2F775FF5F37 /* Pods_PSBN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PSBN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16CBC5C07F946F635AB7AA65 /* Pods-PSBN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PSBN/Pods-PSBN.debug.xcconfig"; sourceTree = "<group>"; };
 		173B5F2B1D85CAD9008C8419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		173B5F2D1D85CC00008C8419 /* PSBN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PSBN.entitlements; sourceTree = "<group>"; };
 		178294EA1D85BAA200752D28 /* PSBN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSBN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		178294ED1D85BAA200752D28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		178294EF1D85BAA200752D28 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		178294EC1D85BAA200752D28 /* PSBN */ = {
 			isa = PBXGroup;
 			children = (
+				173B5F2D1D85CC00008C8419 /* PSBN.entitlements */,
 				178294ED1D85BAA200752D28 /* AppDelegate.swift */,
 				178294EF1D85BAA200752D28 /* MasterViewController.swift */,
 				178294F11D85BAA200752D28 /* DetailViewController.swift */,
@@ -250,6 +252,14 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 84PD2967AA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
 					};
 					178294FF1D85BAA200752D28 = {
 						CreatedOnToolsVersion = 8.0;
@@ -611,6 +621,7 @@
 			baseConfigurationReference = 16CBC5C07F946F635AB7AA65 /* Pods-PSBN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PSBN/PSBN.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PSBN/Info.plist;
@@ -628,6 +639,7 @@
 			baseConfigurationReference = F80B3917C662C6679389EF10 /* Pods-PSBN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PSBN/PSBN.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PSBN/Info.plist;
