@@ -17,6 +17,16 @@ class TheaterList: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // (original height / original width) x new width = new height
+        return CGFloat(9.0/16.0) * tableView.bounds.size.width
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        // (original height / original width) x new width = new height
+        return CGFloat(9.0/16.0) * tableView.bounds.size.width
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
