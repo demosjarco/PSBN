@@ -143,6 +143,7 @@ class TheaterList: UITableViewController {
             self.events.append(eventDateSection)
             
             self.tableView.insertSections(IndexSet(integer: 0), with: .automatic)
+            self.tableView.reloadSectionIndexTitles()
         } else {
             // Check if matches other day section
             var newSectionNeeded = true
@@ -181,11 +182,20 @@ class TheaterList: UITableViewController {
                     return Calendar(identifier: .gregorian).date(from: dc1)! > Calendar(identifier: .gregorian).date(from: dc2)!
                 })
                 self.tableView.reloadData()
+                self.tableView.reloadSectionIndexTitles()
             }
         }
     }
 
     // MARK: - Table view data source
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        var indexTitles = [String]()
+        for eventSection in self.events {
+            indexTitles.append(String(describing: eventSection.month) + "/" + String(describing: eventSection.day))
+        }
+        return indexTitles
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let dateFormatter = DateFormatter()
