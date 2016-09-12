@@ -221,6 +221,16 @@ class TheaterList: UITableViewController {
         // Configure the cell...
         cell.eventName?.text = events[indexPath.section].events[indexPath.row]["full_name"] as! String
         
+        let imageHeight = CGFloat(9.0/16.0) * tableView.bounds.size.width
+        var imageUrl = "http://cdn.livestream.com/newlivestream/poster-default.jpeg"
+        if events[indexPath.section].events[indexPath.row]["logo"] != nil {
+            let logo = events[indexPath.section].events[indexPath.row]["logo"] as! [String: AnyObject]
+            imageUrl = logo["url"] as! String
+        }
+        imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(tableView.bounds.size.width)) + "x" + String(describing: Int(imageHeight)) + ".png")
+        print(imageUrl)
+        cell.eventImage?.setImageWith(URL(string: imageUrl)!)
+        
         return cell
     }
 
