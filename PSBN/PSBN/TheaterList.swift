@@ -221,6 +221,13 @@ class TheaterList: UITableViewController {
         // Configure the cell...
         cell.eventName?.text = events[indexPath.section].events[indexPath.row]["full_name"] as! String
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
+        let eventDate = dateFormatter.date(from: events[indexPath.section].events[indexPath.row]["start_time"] as! String)
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        cell.eventTime?.text = dateFormatter.string(from: eventDate!)
+        
         let imageHeight = CGFloat(9.0/16.0) * tableView.bounds.size.width
         var imageUrl = "http://cdn.livestream.com/newlivestream/poster-default.jpeg"
         if events[indexPath.section].events[indexPath.row]["logo"] != nil {
