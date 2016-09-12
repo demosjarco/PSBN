@@ -23,103 +23,200 @@ class TheaterList: UITableViewController {
     }
     
     @IBAction func refresh(sender: UIRefreshControl?) {
+        if sender != nil {
+            self.tableView.contentOffset = CGPoint(x: CGFloat(0), y: -sender!.frame.size.height)
+        }
         sender?.beginRefreshing()
+        sender?.attributedTitle = NSAttributedString(string: "Loading channels...", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
         events = [EventDateSection]()
         self.tableView.reloadData()
         let remoteConfig = FIRRemoteConfig.remoteConfig()
         remoteConfig.fetch { (status, error) in
             if status == .success {
                 remoteConfig.activateFetched()
-                var countChannels = 0
-                var countChannelsDone = 0
+                var countVideos = 0
+                var countVideosDone = 0
                 
                 if remoteConfig["channel_1_enabled"].boolValue {
-                    countChannels += 1
                     // Show channel 1
                     let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_1_id"].stringValue!
                     AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
                         // Parse JSON
                         let json = responseObject as! [String: AnyObject]
                         let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
                         let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        countVideos += upcoming_events_data.count
                         for event in upcoming_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                         let past_events = json["past_events"] as! [String: AnyObject]
                         let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        countVideos += past_events_data.count
                         for event in past_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                     }, failure: { (task, error) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
                         // Save error to database
                     })
                 }
                 
                 if remoteConfig["channel_2_enabled"].boolValue {
-                    countChannels += 1
                     // Show channel 2
                     let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_2_id"].stringValue!
                     AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
                         // Parse JSON
                         let json = responseObject as! [String: AnyObject]
                         let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
                         let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        countVideos += upcoming_events_data.count
                         for event in upcoming_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                         let past_events = json["past_events"] as! [String: AnyObject]
                         let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        countVideos += past_events_data.count
                         for event in past_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                     }, failure: { (task, error) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
                         // Save error to database
                     })
                 }
                 
                 if remoteConfig["channel_liberty_enabled"].boolValue {
-                    countChannels += 1
                     // Show channel Liberty
                     let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_liberty_id"].stringValue!
                     AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
                         // Parse JSON
                         let json = responseObject as! [String: AnyObject]
                         let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
                         let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        countVideos += upcoming_events_data.count
                         for event in upcoming_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                         let past_events = json["past_events"] as! [String: AnyObject]
                         let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        countVideos += past_events_data.count
                         for event in past_events_data {
-                            self.parseEvent(event: event)
+                            let url1 = url + "/events/" + event["id"]!.stringValue
+                            AFHTTPSessionManager().get(url1, parameters: nil, progress: nil, success: { (task1, responseObject1) in
+                                countVideosDone += 1
+                                let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
+                                sender?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Parse JSON
+                                let json1 = responseObject1 as! [String: AnyObject]
+                                self.parseEvent(event: json1)
+                            }, failure: { (task1, error1) in
+                                countVideosDone += 1
+                                if countVideosDone == countVideos {
+                                    sender?.endRefreshing()
+                                    sender?.attributedTitle = nil
+                                }
+                                // Save error to database
+                            })
                         }
                     }, failure: { (task, error) in
-                        countChannelsDone += 1
-                        if countChannelsDone == countChannels {
-                            sender?.endRefreshing()
-                        }
-                            // Save error to database
+                        // Save error to database
                     })
                 }
             } else {
@@ -218,23 +315,56 @@ class TheaterList: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath) as! TheaterListCell
+        // Performance
+        cell.layer.shouldRasterize = true
+        cell.layer.rasterizationScale = UIScreen.main.scale
+        // Reset
+        cell.eventName?.text = nil
+        cell.eventTime?.text = nil
+        cell.eventDuration?.text = nil
+        cell.eventLikesPlays?.text = nil
+        cell.eventImage?.image = nil
         // Configure the cell...
-        cell.eventName?.text = events[indexPath.section].events[indexPath.row]["full_name"] as! String
+        let event = events[indexPath.section].events[indexPath.row]
+        
+        cell.eventName?.text = event["full_name"]! as! String
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
-        let eventDate = dateFormatter.date(from: events[indexPath.section].events[indexPath.row]["start_time"] as! String)
+        let eventDate = dateFormatter.date(from: event["start_time"] as! String)
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
         cell.eventTime?.text = dateFormatter.string(from: eventDate!)
         
+        let feed = event["feed"] as! [String: AnyObject]
+        if Int(feed["total"]! as! NSNumber) > 0 {
+            let feedData = feed["data"] as! [[String: AnyObject]]
+            for data in feedData {
+                if data["type"] as! String == "video" {
+                    
+                    let data1 = data["data"] as! [String: AnyObject]
+                    let milliseconds = data1["duration"] as! NSNumber
+                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                    if milliseconds.doubleValue >= 3600000 {
+                        dateFormatter.dateFormat = "H:mm:ss"
+                    } else {
+                        dateFormatter.dateFormat = "mm:ss"
+                    }
+                    cell.eventDuration?.text = dateFormatter.string(from: Date(timeIntervalSince1970: milliseconds.doubleValue / 1000))
+                    
+                    cell.eventLikesPlays?.text = "♥\u{0000FE0E} " + String(describing: event["likes"]!["total"]!) + " ▶\u{0000FE0E} " + String(describing: data1["views"]!)
+                    break
+                }
+            }
+        }
+        
         let imageHeight = CGFloat(9.0/16.0) * tableView.bounds.size.width
         var imageUrl = "http://cdn.livestream.com/newlivestream/poster-default.jpeg"
-        if events[indexPath.section].events[indexPath.row]["logo"] != nil {
-            let logo = events[indexPath.section].events[indexPath.row]["logo"] as! [String: AnyObject]
+        if event["logo"] != nil {
+            let logo = event["logo"] as! [String: AnyObject]
             imageUrl = logo["url"] as! String
         }
-        imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(tableView.bounds.size.width)) + "x" + String(describing: Int(imageHeight)) + ".png")
+        imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(tableView.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".png")
         cell.eventImage?.setImageWith(URL(string: imageUrl)!)
         
         return cell
