@@ -217,10 +217,10 @@ class TheaterList: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell", for: indexPath) as! TheaterListCell
         // Configure the cell...
-
+        cell.eventName?.text = events[indexPath.section].events[indexPath.row]["full_name"] as! String
+        
         return cell
     }
 
