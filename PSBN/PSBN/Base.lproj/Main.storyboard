@@ -76,7 +76,7 @@
                                     <frame key="frameInset" width="375" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-nT-EyZ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-nT-EyZ">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="9fX-nT-EyZ" secondAttribute="height" multiplier="16:9" id="pnI-rb-lVI"/>
                                             </constraints>
