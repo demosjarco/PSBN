@@ -158,6 +158,11 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.10979025810956955" green="0.10981262475252151" blue="0.10978538542985916" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="eventDuration" destination="b0Y-Lg-2FL" id="wVk-Fo-9wN"/>
+                                    <outlet property="eventImage" destination="9fX-nT-EyZ" id="boH-M2-rCP"/>
+                                    <outlet property="eventLikesPlays" destination="jPM-F1-gzL" id="hMC-hj-ikf"/>
+                                    <outlet property="eventName" destination="3bt-LO-Kr8" id="bNr-g4-HSU"/>
+                                    <outlet property="eventTime" destination="lEr-1O-dUb" id="7Un-7m-scx"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>
                             </tableViewCell>
