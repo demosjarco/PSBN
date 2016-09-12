@@ -16,6 +16,9 @@ class TheaterList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 180
+        
         refresh(sender: self.refreshControl)
     }
     
@@ -205,16 +208,6 @@ class TheaterList: UITableViewController {
         return dateFormatter.string(from: Calendar(identifier: .gregorian).date(from: dc)!)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        // (original height / original width) x new width = new height
-        return CGFloat(9.0/16.0) * tableView.bounds.size.width
-    }
-    
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        // (original height / original width) x new width = new height
-        return CGFloat(9.0/16.0) * tableView.bounds.size.width
-    }
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return events.count
     }
