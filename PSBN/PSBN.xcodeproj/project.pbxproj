@@ -61,6 +61,7 @@
 		17D3552E1D862B5C00F4845E /* EventDateSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDateSection.swift; sourceTree = "<group>"; };
 		17D355301D86364200F4845E /* TheaterListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterListCell.swift; sourceTree = "<group>"; };
 		17D355321D8638A400F4845E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		17D355341D863AAE00F4845E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		17FBB2B71D85FFFB00C3D970 /* TheaterList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterList.swift; sourceTree = "<group>"; };
 		17FBB2B91D860A6D00C3D970 /* TheaterEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterEvent.swift; sourceTree = "<group>"; };
 		5B9C224C7DFC5A995C270184 /* Pods-PSBNUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PSBNUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PSBNUITests/Pods-PSBNUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		17D3552D1D862B5C00F4845E /* Subclasses */ = {
 			isa = PBXGroup;
 			children = (
+				17D355341D863AAE00F4845E /* Bridging-Header.h */,
 				17D3552E1D862B5C00F4845E /* EventDateSection.swift */,
 				17D355301D86364200F4845E /* TheaterListCell.swift */,
 			);
