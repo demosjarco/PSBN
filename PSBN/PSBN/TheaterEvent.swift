@@ -12,6 +12,9 @@ class TheaterEvent: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationItem.leftBarButtonItem = self.navigationController?.splitViewController?.displayModeButtonItem
+        self.navigationItem.leftItemsSupplementBackButton = true
+        
         self.configureView()
     }
     
