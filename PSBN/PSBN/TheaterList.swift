@@ -228,7 +228,6 @@ class TheaterList: UITableViewController {
             imageUrl = logo["url"] as! String
         }
         imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(tableView.bounds.size.width)) + "x" + String(describing: Int(imageHeight)) + ".png")
-        print(imageUrl)
         cell.eventImage?.setImageWith(URL(string: imageUrl)!)
         
         return cell
