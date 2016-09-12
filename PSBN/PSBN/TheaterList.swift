@@ -11,6 +11,8 @@ import Firebase
 import AFNetworking
 
 class TheaterList: UITableViewController {
+    var events = [EventDateSection]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,10 +24,179 @@ class TheaterList: UITableViewController {
     
     @IBAction func refresh(sender: UIRefreshControl?) {
         sender?.beginRefreshing()
-        sender?.endRefreshing()
+        events = [EventDateSection]()
+        self.tableView.reloadData()
+        let remoteConfig = FIRRemoteConfig.remoteConfig()
+        remoteConfig.fetch { (status, error) in
+            if status == .success {
+                remoteConfig.activateFetched()
+                var countChannels = 0
+                var countChannelsDone = 0
+                
+                if remoteConfig["channel_1_enabled"].boolValue {
+                    countChannels += 1
+                    // Show channel 1
+                    let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_1_id"].stringValue!
+                    AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                        // Parse JSON
+                        let json = responseObject as! [String: AnyObject]
+                        let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
+                        let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        for event in upcoming_events_data {
+                            self.parseEvent(event: event)
+                        }
+                        let past_events = json["past_events"] as! [String: AnyObject]
+                        let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        for event in past_events_data {
+                            self.parseEvent(event: event)
+                        }
+                    }, failure: { (task, error) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                        // Save error to database
+                    })
+                }
+                
+                if remoteConfig["channel_2_enabled"].boolValue {
+                    countChannels += 1
+                    // Show channel 2
+                    let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_2_id"].stringValue!
+                    AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                        // Parse JSON
+                        let json = responseObject as! [String: AnyObject]
+                        let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
+                        let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        for event in upcoming_events_data {
+                            self.parseEvent(event: event)
+                        }
+                        let past_events = json["past_events"] as! [String: AnyObject]
+                        let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        for event in past_events_data {
+                            self.parseEvent(event: event)
+                        }
+                    }, failure: { (task, error) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                        // Save error to database
+                    })
+                }
+                
+                if remoteConfig["channel_liberty_enabled"].boolValue {
+                    countChannels += 1
+                    // Show channel Liberty
+                    let url = remoteConfig["api_host"].stringValue! + "/accounts/" + remoteConfig["channel_liberty_id"].stringValue!
+                    AFHTTPSessionManager().get(url, parameters: nil, progress: nil, success: { (task, responseObject) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                        // Parse JSON
+                        let json = responseObject as! [String: AnyObject]
+                        let upcoming_events = json["upcoming_events"] as! [String: AnyObject]
+                        let upcoming_events_data = upcoming_events["data"] as! [[String: AnyObject]]
+                        for event in upcoming_events_data {
+                            self.parseEvent(event: event)
+                        }
+                        let past_events = json["past_events"] as! [String: AnyObject]
+                        let past_events_data = past_events["data"] as! [[String: AnyObject]]
+                        for event in past_events_data {
+                            self.parseEvent(event: event)
+                        }
+                    }, failure: { (task, error) in
+                        countChannelsDone += 1
+                        if countChannelsDone == countChannels {
+                            sender?.endRefreshing()
+                        }
+                            // Save error to database
+                    })
+                }
+            } else {
+                sender?.endRefreshing()
+            }
+        }
+    }
+    
+    func parseEvent(event: [String: AnyObject]) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
+        let eventDate = dateFormatter.date(from: event["start_time"] as! String)
+        let eventDateComponents = Calendar(identifier: .gregorian).dateComponents(Set<Calendar.Component>([.year, .month, .day]), from: eventDate!)
+        if self.events.count == 0 {
+            // First day section
+            let eventDateSection = EventDateSection()
+            eventDateSection.year = eventDateComponents.year!
+            eventDateSection.month = eventDateComponents.month!
+            eventDateSection.day = eventDateComponents.day!
+            eventDateSection.events.append(event)
+            self.events.append(eventDateSection)
+            
+            self.tableView.insertSections(IndexSet(integer: 0), with: .automatic)
+        } else {
+            // Check if matches other day section
+            var newSectionNeeded = true
+            
+            for eventDateSection in self.events {
+                if eventDateSection.year == eventDateComponents.year && eventDateSection.month == eventDateComponents.month && eventDateSection.day == eventDateComponents.day {
+                    newSectionNeeded = false
+                    eventDateSection.events.append(event)
+                    eventDateSection.events.sort(by: { (o1, o2) -> Bool in
+                        let d1 = dateFormatter.date(from: o1["start_time"] as! String)
+                        let d2 = dateFormatter.date(from: o2["start_time"] as! String)
+                        return d1! > d2!
+                    })
+                    self.tableView.reloadSections(IndexSet(integer: self.events.index(of: eventDateSection)!), with: .automatic)
+                    break;
+                }
+            }
+            
+            if newSectionNeeded {
+                let eventDateSection = EventDateSection()
+                eventDateSection.year = eventDateComponents.year!
+                eventDateSection.month = eventDateComponents.month!
+                eventDateSection.day = eventDateComponents.day!
+                eventDateSection.events.append(event)
+                self.events.append(eventDateSection)
+                
+                self.events.sort(by: { (o1, o2) -> Bool in
+                    var dc1 = DateComponents()
+                    dc1.year = o1.year
+                    dc1.month = o1.month
+                    dc1.day = o1.day
+                    var dc2 = DateComponents()
+                    dc2.year = o2.year
+                    dc2.month = o2.month
+                    dc2.day = o2.day
+                    return Calendar(identifier: .gregorian).date(from: dc1)! > Calendar(identifier: .gregorian).date(from: dc2)!
+                })
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        var dc = DateComponents()
+        dc.year = events[section].year
+        dc.month = events[section].month
+        dc.day = events[section].day
+        return dateFormatter.string(from: Calendar(identifier: .gregorian).date(from: dc)!)
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // (original height / original width) x new width = new height
@@ -38,13 +209,11 @@ class TheaterList: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return events.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return events[section].events.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
