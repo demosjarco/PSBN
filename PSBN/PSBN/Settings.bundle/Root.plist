@@ -9,22 +9,6 @@
 		<dict>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Video Feed</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Show video thumbnails</string>
-			<key>Key</key>
-			<string>psbn_useThumbnails</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>Type</key>
