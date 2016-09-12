@@ -72,11 +72,11 @@
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="videoCell" id="WCw-Qf-5nD" customClass="TheaterListCell" customModule="PSBN" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="120" width="375" height="211"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <frame key="frameInset" width="375" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-nT-EyZ">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-nT-EyZ">
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="9fX-nT-EyZ" secondAttribute="height" multiplier="16:9" id="pnI-rb-lVI"/>
                                             </constraints>
@@ -143,9 +143,11 @@
                                                     <constraint firstAttribute="bottom" secondItem="qYe-0e-Y8d" secondAttribute="bottom" id="xkY-l7-bGZ"/>
                                                 </constraints>
                                             </view>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <blurEffect style="dark"/>
                                         </visualEffectView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="9fX-nT-EyZ" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leading" id="2MH-pB-bE3"/>
                                         <constraint firstItem="kNQ-5f-dYN" firstAttribute="height" secondItem="9fX-nT-EyZ" secondAttribute="height" multiplier="0.333333" id="BFt-fg-d7x"/>
