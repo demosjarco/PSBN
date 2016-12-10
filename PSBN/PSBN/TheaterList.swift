@@ -163,7 +163,7 @@ class TheaterList: UITableViewController {
         if self.events.count == 0 {
             // First day section
             let eventDateSection = EventDateSection()
-            eventDateSection.date = eventDateComponents.date!
+            eventDateSection.date = Calendar(identifier: .gregorian).startOfDay(for: eventDate!)
             eventDateSection.year = eventDateComponents.year!
             eventDateSection.month = eventDateComponents.month!
             eventDateSection.day = eventDateComponents.day!
@@ -192,6 +192,7 @@ class TheaterList: UITableViewController {
             
             if newSectionNeeded {
                 let eventDateSection = EventDateSection()
+                eventDateSection.date = Calendar(identifier: .gregorian).startOfDay(for: eventDate!)
                 eventDateSection.year = eventDateComponents.year!
                 eventDateSection.month = eventDateComponents.month!
                 eventDateSection.day = eventDateComponents.day!
