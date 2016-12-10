@@ -138,16 +138,13 @@ class TheaterList: UITableViewController {
             refresher?.attributedTitle = nil
             
             // Scroll to today or closest day but not in the future
-            let todayDateComponents = Calendar(identifier: .gregorian).dateComponents(Set<Calendar.Component>([.year, .month, .day]), from: Date())
-            var dateDifference:TimeInterval = TimeInterval(Int.min)
+            var dateDifference:TimeInterval = DBL_MAX
             var closestSection:Int = 0
             for daySection in self.events {
-                // timeIntervalSinceNow is negative for past
-                if daySection.date.timeIntervalSinceNow <= 0 {
-                    if daySection.date.timeIntervalSinceNow > dateDifference {
-                        dateDifference = daySection.date.timeIntervalSinceNow
-                        closestSection = self.events.index(of: daySection)!
-                    }
+                // difference is positive for past
+                if Calendar(identifier: .gregorian).startOfDay(for: Date()).timeIntervalSince(daySection.date) >= 0 && Calendar(identifier: .gregorian).startOfDay(for: Date()).timeIntervalSince(daySection.date) < dateDifference {
+                    dateDifference = Calendar(identifier: .gregorian).startOfDay(for: Date()).timeIntervalSince(daySection.date)
+                    closestSection = self.events.index(of: daySection)!
                 }
             }
             let today = IndexPath(row: 0, section: closestSection)
