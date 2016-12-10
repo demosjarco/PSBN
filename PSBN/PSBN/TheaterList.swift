@@ -326,13 +326,15 @@ class TheaterList: UITableViewController {
         return cell
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Segues
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let event = events[indexPath.section].events[indexPath.row]
+                let controller = (segue.destination as! UINavigationController).topViewController as! TheaterEvent
+                controller.detailItem = event
+            }
+        }
     }
-    */
 }
