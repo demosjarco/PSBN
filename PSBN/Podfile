@@ -2,25 +2,25 @@
 platform :ios, '9.0'
 
 target 'PSBN' do
-    # Comment this line if you're not using Swift and don't want to use dynamic frameworks
-    use_frameworks!
-    workspace 'project'
+	# Comment this line if you're not using Swift and don't want to use dynamic frameworks
+	use_frameworks!
+	workspace 'project'
 
-    # Pods for PSBN
+	# Pods for Info Center for League of Legends
     pod 'Firebase/Core'
-    pod 'Firebase/Database'
-    pod 'Firebase/Auth'
-    pod 'Firebase/Messaging'
-    pod 'Firebase/RemoteConfig'
-    pod 'AFNetworking'
+	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Messaging'
+	pod 'Firebase/RemoteConfig'
+    # pod 'AFNetworking'
 
-    target 'PSBNTests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
+	target 'PSBNTests' do
+		inherit! :search_paths
+		# Pods for testing
+	end
 
-    target 'PSBNUITests' do
-        inherit! :search_paths
-        # Pods for testing
-    end
+	target 'PSBNUITests' do
+		inherit! :search_paths
+		# Pods for testing
+	end
 end
