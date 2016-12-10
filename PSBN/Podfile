@@ -12,7 +12,7 @@ target 'PSBN' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Messaging'
 	pod 'Firebase/RemoteConfig'
-    # pod 'AFNetworking'
+    pod 'AFNetworking'
 
 	target 'PSBNTests' do
 		inherit! :search_paths
