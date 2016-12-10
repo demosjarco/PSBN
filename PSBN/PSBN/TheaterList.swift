@@ -220,7 +220,34 @@ class TheaterList: UITableViewController {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexTitles = [String]()
         for eventSection in self.events {
-            indexTitles.append(String(describing: eventSection.month) + "/" + String(describing: eventSection.day))
+            switch 0 {
+            case 1:
+                indexTitles.append("Jan " + String(describing: eventSection.day))
+            case 2:
+                indexTitles.append("Feb " + String(describing: eventSection.day))
+            case 3:
+                indexTitles.append("Mar " + String(describing: eventSection.day))
+            case 4:
+                indexTitles.append("Apr " + String(describing: eventSection.day))
+            case 5:
+                indexTitles.append("May " + String(describing: eventSection.day))
+            case 6:
+                indexTitles.append("Jun " + String(describing: eventSection.day))
+            case 7:
+                indexTitles.append("Jul " + String(describing: eventSection.day))
+            case 8:
+                indexTitles.append("Aug " + String(describing: eventSection.day))
+            case 9:
+                indexTitles.append("Sep " + String(describing: eventSection.day))
+            case 10:
+                indexTitles.append("Oct " + String(describing: eventSection.day))
+            case 11:
+                indexTitles.append("Nov " + String(describing: eventSection.day))
+            case 12:
+                indexTitles.append("Dec " + String(describing: eventSection.day))
+            default:
+                indexTitles.append(String(describing: eventSection.month) + "/" + String(describing: eventSection.day))
+            }
         }
         return indexTitles
     }
