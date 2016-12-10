@@ -44,7 +44,7 @@ class TheaterList: UITableViewController {
             self.tableView.contentOffset = CGPoint(x: CGFloat(0), y: -sender!.frame.size.height)
         }
         sender?.beginRefreshing()
-        sender?.attributedTitle = NSAttributedString(string: "Loading channels...", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))])
+        sender?.attributedTitle = NSAttributedString(string: "Loading channels...", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))])
         events = [EventDateSection]()
         self.tableView.reloadData()
         let remoteConfig = FIRRemoteConfig.remoteConfig()
