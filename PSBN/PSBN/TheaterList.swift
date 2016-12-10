@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import AFNetworking
 
 class TheaterList: UITableViewController {
     var events = [EventDateSection]()
