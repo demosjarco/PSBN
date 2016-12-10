@@ -73,10 +73,10 @@
                         <color key="sectionIndexBackgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="videoCell" id="WCw-Qf-5nD" customClass="TheaterListCell" customModule="PSBN" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="211"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="211"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9fX-nT-EyZ">
@@ -87,46 +87,46 @@
                                             </constraints>
                                         </imageView>
                                         <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNQ-5f-dYN">
-                                            <rect key="frame" x="0.0" y="140" width="375" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="140" width="375" height="71"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="hOq-Zm-enY">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYe-0e-Y8d">
-                                                        <rect key="frame" x="8" y="8" width="359" height="54.5"/>
+                                                        <rect key="frame" x="8" y="8" width="359" height="55"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JbJ-d3-jC3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="54.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="55"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UAx-zw-7ct">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="54.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="55"/>
                                                                     <subviews>
                                                                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3bt-LO-Kr8">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="27.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="28"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7NG-9e-A8p">
-                                                                            <rect key="frame" x="0.0" y="27.5" width="359" height="27"/>
+                                                                            <rect key="frame" x="0.0" y="28" width="359" height="27"/>
                                                                             <subviews>
                                                                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0Y-Lg-2FL">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="119.5" height="27"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="27"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lEr-1O-dUb">
-                                                                                    <rect key="frame" x="119.5" y="0.0" width="120" height="27"/>
+                                                                                    <rect key="frame" x="120" y="0.0" width="119" height="27"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jPM-F1-gzL">
-                                                                                    <rect key="frame" x="239.5" y="0.0" width="119.5" height="27"/>
+                                                                                    <rect key="frame" x="239" y="0.0" width="120" height="27"/>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                                     <nil key="textColor"/>
