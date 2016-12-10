@@ -12,6 +12,23 @@ import Firebase
 class TheaterList: UITableViewController {
     var events = [EventDateSection]()
     
+    func getDeviceModel() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        
+        let machine = systemInfo.machine
+        let mirror = Mirror(reflecting: machine)
+        var identifier = ""
+        
+        for child in mirror.children {
+            if let value = child.value as? Int8 , value != 0 {
+                identifier.append(String(UnicodeScalar(UInt8(value))))
+            }
+        }
+        
+        return identifier
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
