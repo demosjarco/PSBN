@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         application.registerForRemoteNotifications()
         
         // Override point for customization after application launch.
-        window?.tintColor = UIColor(red: CGFloat(229.0/255.0), green: CGFloat(46.0/255.0), blue: CGFloat(23.0/255.0), alpha: CGFloat(1.0))
+        window?.tintColor = UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))
         
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
