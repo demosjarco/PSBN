@@ -244,7 +244,7 @@ class TheaterList: UITableViewController {
     
     func updateRefreshProgress(refresher: UIRefreshControl?, countVideos: Int, countVideosDone: Int) {
         let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
-        refresher?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + "(" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))])
+        refresher?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + " (" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))])
         if countVideosDone == countVideos {
             refresher?.endRefreshing()
             refresher?.attributedTitle = nil
