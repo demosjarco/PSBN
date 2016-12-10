@@ -133,8 +133,25 @@ class TheaterList: UITableViewController {
         let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
         refresher?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + " (" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))])
         if countVideosDone == countVideos {
+            // Stop refreshing
             refresher?.endRefreshing()
             refresher?.attributedTitle = nil
+            
+            // Scroll to today or closest day but not in the future
+            let todayDateComponents = Calendar(identifier: .gregorian).dateComponents(Set<Calendar.Component>([.year, .month, .day]), from: Date())
+            var dateDifference:TimeInterval = TimeInterval(Int.min)
+            var closestSection:Int = 0
+            for daySection in self.events {
+                // timeIntervalSinceNow is negative for past
+                if daySection.date.timeIntervalSinceNow <= 0 {
+                    if daySection.date.timeIntervalSinceNow > dateDifference {
+                        dateDifference = daySection.date.timeIntervalSinceNow
+                        closestSection = self.events.index(of: daySection)!
+                    }
+                }
+            }
+            let today = IndexPath(row: 0, section: closestSection)
+            self.tableView.scrollToRow(at: today, at: UITableViewScrollPosition.top, animated: true)
         }
     }
     
@@ -146,6 +163,7 @@ class TheaterList: UITableViewController {
         if self.events.count == 0 {
             // First day section
             let eventDateSection = EventDateSection()
+            eventDateSection.date = eventDateComponents.date!
             eventDateSection.year = eventDateComponents.year!
             eventDateSection.month = eventDateComponents.month!
             eventDateSection.day = eventDateComponents.day!
