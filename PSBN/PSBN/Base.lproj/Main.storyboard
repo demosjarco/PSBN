@@ -30,7 +30,7 @@
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="TheaterEvent" customModule="PSBN" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="eventViewer" title="Detail" id="JEX-9P-axG" customClass="TheaterEvent" customModule="PSBN" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -38,10 +38,55 @@
                     <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.09018407016992569" green="0.090203739702701569" blue="0.090179748833179474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rvc-Hm-9kb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIF-pg-z3R">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="OYX-0u-Rwf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aZH-2h-gLB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="211"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="aZH-2h-gLB" secondAttribute="height" multiplier="16:9" id="VsY-VA-8rS"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vIF-pg-z3R" secondAttribute="trailing" id="62R-jY-azv"/>
+                            <constraint firstItem="aZH-2h-gLB" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="DQD-VT-EUd"/>
+                            <constraint firstAttribute="trailing" secondItem="rvc-Hm-9kb" secondAttribute="trailing" id="EXu-FA-2ov"/>
+                            <constraint firstItem="rvc-Hm-9kb" firstAttribute="top" secondItem="svH-Pt-448" secondAttribute="top" id="FmU-Ex-cuP"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="vIF-pg-z3R" secondAttribute="bottom" id="Pcp-Ae-Hg4"/>
+                            <constraint firstItem="vIF-pg-z3R" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="YgE-WD-EzD"/>
+                            <constraint firstItem="rvc-Hm-9kb" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" id="bLl-sU-C5p"/>
+                            <constraint firstItem="aZH-2h-gLB" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="c6Z-F0-pxv"/>
+                            <constraint firstItem="GAO-Cl-Wes" firstAttribute="top" secondItem="rvc-Hm-9kb" secondAttribute="bottom" id="jwn-J9-ej5"/>
+                            <constraint firstItem="vIF-pg-z3R" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" id="tyX-5t-p9J"/>
+                            <constraint firstItem="aZH-2h-gLB" firstAttribute="width" secondItem="svH-Pt-448" secondAttribute="width" id="yo2-cD-tl3"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" id="mOI-FS-AaM">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="action" id="jeZ-Kd-mfS">
+                            <connections>
+                                <action selector="shareButtonPressedWithSender:" destination="JEX-9P-axG" id="Gld-6U-E91"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bgPoster" destination="rvc-Hm-9kb" id="h5p-Ia-z4E"/>
+                        <outlet property="thumbnail" destination="aZH-2h-gLB" id="d2V-S7-Ppl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
