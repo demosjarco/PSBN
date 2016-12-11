@@ -36,21 +36,52 @@ class TheaterEvent: UIViewController {
             self.title = detail["full_name"] as! String
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             
+            // Background image
             let remoteConfig = FIRRemoteConfig.remoteConfig()
             remoteConfig.fetch(completionHandler: { (status, error) in
                 if status == .success {
                     remoteConfig.activateFetched()
                     
                     var imageUrl = remoteConfig["blank_poster_url"].stringValue!
-                    let imageHeight = CGFloat(9.0/16.0) * self.view.bounds.size.width
+                    let imageHeight = CGFloat(9.0/16.0) * max(self.view.bounds.size.width, self.view.bounds.size.height)
                     if detail["logo"] != nil {
                         let logo = detail["logo"] as! [String: AnyObject]
                         imageUrl = logo["url"] as! String
                     }
-                    imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(self.view.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".png")
+                    imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(max(self.view.bounds.size.width, self.view.bounds.size.height) * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".png")
                     self.bgPoster?.setImageWith(URL(string: imageUrl)!)
                 }
             })
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
+            let eventDate = dateFormatter.date(from: detail["start_time"] as! String)
+            
+            // Positive is past
+            if Date().timeIntervalSince(eventDate!) > 0 {
+                // Past event
+                if (detail["feed"] != nil) {
+                    let feed = detail["feed"] as! [String: AnyObject]
+                    
+                    if (feed["data"] != nil) {
+                        let data = feed["data"] as! [[String: AnyObject]]
+                        
+                        for feedItem in data {
+                            if feedItem["type"] as! String == "video" {
+                                let data = feedItem["data"] as! [String: AnyObject]
+                                
+                                var imageUrl = data["thumbnail_url"] as! String
+                                let imageHeight = CGFloat(9.0/16.0) * self.view.bounds.size.width
+                                imageUrl = imageUrl.replacingOccurrences(of: ".jpg", with: "_" + String(describing: Int(self.view.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".jpg")
+                                print(imageUrl)
+                                self.thumbnail?.setImageWith(URL(string: imageUrl)!)
+                                
+                                break
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     
