@@ -73,7 +73,6 @@ class TheaterEvent: UIViewController {
                                 var imageUrl = data["thumbnail_url"] as! String
                                 let imageHeight = CGFloat(9.0/16.0) * self.view.bounds.size.width
                                 imageUrl = imageUrl.replacingOccurrences(of: ".jpg", with: "_" + String(describing: Int(self.view.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".jpg")
-                                print(imageUrl)
                                 self.thumbnail?.setImageWith(URL(string: imageUrl)!)
                                 
                                 break
