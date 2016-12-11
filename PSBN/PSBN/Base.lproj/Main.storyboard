@@ -59,40 +59,15 @@
                                         <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68A-5j-T9A">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                             <subviews>
-                                                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIU-fH-vFE">
+                                                <button hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W75-eh-3pf">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Liu-jY-Ru1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <subviews>
-                                                            <button hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W75-eh-3pf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                <state key="normal" title="▶"/>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="W75-eh-3pf" secondAttribute="bottom" id="7B2-qI-Kqn"/>
-                                                            <constraint firstAttribute="trailing" secondItem="W75-eh-3pf" secondAttribute="trailing" id="Xyu-XH-gki"/>
-                                                            <constraint firstItem="W75-eh-3pf" firstAttribute="top" secondItem="Liu-jY-Ru1" secondAttribute="top" id="hLq-Tp-6KI"/>
-                                                            <constraint firstItem="W75-eh-3pf" firstAttribute="leading" secondItem="Liu-jY-Ru1" secondAttribute="leading" id="pY5-J6-vuy"/>
-                                                        </constraints>
-                                                    </view>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <vibrancyEffect>
-                                                        <blurEffect style="dark"/>
-                                                    </vibrancyEffect>
-                                                </visualEffectView>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <state key="normal" title="▶"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="aIU-fH-vFE" secondAttribute="bottom" id="1cx-j4-q70"/>
-                                                <constraint firstItem="aIU-fH-vFE" firstAttribute="top" secondItem="68A-5j-T9A" secondAttribute="top" id="KsY-7i-JpO"/>
-                                                <constraint firstItem="aIU-fH-vFE" firstAttribute="leading" secondItem="68A-5j-T9A" secondAttribute="leading" id="eWZ-ji-NLo"/>
-                                                <constraint firstAttribute="trailing" secondItem="aIU-fH-vFE" secondAttribute="trailing" id="hTE-wS-q51"/>
-                                            </constraints>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
