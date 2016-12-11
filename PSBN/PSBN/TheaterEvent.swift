@@ -13,6 +13,7 @@ import AFNetworking
 class TheaterEvent: UIViewController {
     @IBOutlet var bgPoster:UIImageView?
     @IBOutlet var thumbnail:UIImageView?
+    @IBOutlet var playButtonVibrancy:UIVisualEffectView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +76,16 @@ class TheaterEvent: UIViewController {
                                 imageUrl = imageUrl.replacingOccurrences(of: ".jpg", with: "_" + String(describing: Int(self.view.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".jpg")
                                 self.thumbnail?.setImageWith(URL(string: imageUrl)!)
                                 
+                                playButtonVibrancy?.isHidden = false
+                                
                                 break
                             }
                         }
                     }
                 }
+            } else {
+                // Future event
+                playButtonVibrancy?.isHidden = true
             }
         }
     }
