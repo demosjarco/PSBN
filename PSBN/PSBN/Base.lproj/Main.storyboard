@@ -132,7 +132,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bgPoster" destination="rvc-Hm-9kb" id="h5p-Ia-z4E"/>
-                        <outlet property="playButtonVibrancy" destination="aIU-fH-vFE" id="LXr-Fu-Qyx"/>
+                        <outlet property="playButton" destination="W75-eh-3pf" id="PCf-ru-NQu"/>
                         <outlet property="thumbnail" destination="aZH-2h-gLB" id="d2V-S7-Ppl"/>
                     </connections>
                 </viewController>
