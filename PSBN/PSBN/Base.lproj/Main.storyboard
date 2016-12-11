@@ -56,7 +56,7 @@
                                                 <constraint firstAttribute="width" secondItem="aZH-2h-gLB" secondAttribute="height" multiplier="16:9" id="VsY-VA-8rS"/>
                                             </constraints>
                                         </imageView>
-                                        <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68A-5j-T9A">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68A-5j-T9A">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                             <subviews>
                                                 <button hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W75-eh-3pf">
