@@ -34,7 +34,7 @@ class TheaterEvent: UIViewController {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = self.detailItem {
-            self.title = detail["full_name"] as! String
+            self.title = detail["full_name"] as? String
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             
             let dateFormatter = DateFormatter()
