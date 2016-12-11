@@ -37,6 +37,10 @@ class TheaterEvent: UIViewController {
             self.title = detail["full_name"] as! String
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
+            let eventDate = dateFormatter.date(from: detail["start_time"] as! String)
+            
             // Background image
             let remoteConfig = FIRRemoteConfig.remoteConfig()
             remoteConfig.fetch(completionHandler: { (status, error) in
@@ -51,12 +55,13 @@ class TheaterEvent: UIViewController {
                     }
                     imageUrl = imageUrl.replacingOccurrences(of: ".png", with: "_" + String(describing: Int(max(self.view.bounds.size.width, self.view.bounds.size.height) * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".png")
                     self.bgPoster?.setImageWith(URL(string: imageUrl)!)
+                    
+                    if Date().timeIntervalSince(eventDate!) < 0 {
+                        // Future event
+                        self.thumbnail?.setImageWith(URL(string: imageUrl)!)
+                    }
                 }
             })
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
-            let eventDate = dateFormatter.date(from: detail["start_time"] as! String)
             
             // Positive is past
             if Date().timeIntervalSince(eventDate!) > 0 {
