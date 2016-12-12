@@ -74,9 +74,9 @@ class TheaterEvent: UIViewController {
                         
                         for feedItem in data {
                             if feedItem["type"] as! String == "video" {
-                                let data = feedItem["data"] as! [String: AnyObject]
+                                let data2 = feedItem["data"] as! [String: AnyObject]
                                 
-                                var imageUrl = data["thumbnail_url"] as! String
+                                var imageUrl = data2["thumbnail_url"] as! String
                                 let imageHeight = CGFloat(9.0/16.0) * self.view.bounds.size.width
                                 imageUrl = imageUrl.replacingOccurrences(of: ".jpg", with: "_" + String(describing: Int(self.view.bounds.size.width * UIScreen.main.scale)) + "x" + String(describing: Int(imageHeight * UIScreen.main.scale)) + ".jpg")
                                 self.thumbnail?.setImageWith(URL(string: imageUrl)!)
