@@ -65,6 +65,9 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                     <state key="normal" title="▶"/>
+                                                    <connections>
+                                                        <segue destination="7jz-Bn-MJE" kind="show" identifier="showPlayer" id="gmQ-Jd-Xya"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.66000000000000003" colorSpace="calibratedRGB"/>
