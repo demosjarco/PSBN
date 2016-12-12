@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import AFNetworking
+import AVKit
+import AVFoundation
 
 class TheaterEvent: UIViewController {
     @IBOutlet var bgPoster:UIImageView?
@@ -117,5 +119,41 @@ class TheaterEvent: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showPlayer" {
+            let player = segue.destination as! AVPlayerViewController
+            
+            let playerItem:AVPlayerItem?
+            
+            // Positive is past
+            if Date().timeIntervalSince(eventDate!) > 0 {
+                // Past event
+                if (detail["feed"] != nil) {
+                    let feed = detail["feed"] as! [String: AnyObject]
+                    
+                    if (feed["data"] != nil) {
+                        let data = feed["data"] as! [[String: AnyObject]]
+                        
+                        for feedItem in data {
+                            if feedItem["type"] as! String == "video" {
+                                let data2 = feedItem["data"] as! [String: AnyObject]
+                                
+                                var url = ""
+                                if data2["secure_progressive_url"] {
+                                    url = data2["secure_progressive_url"] as! String
+                                } else if data2["progressive_url"] {
+                                    url = data2["progressive_url"] as! String
+                                }
+                                
+                                player.player = AVPlayer(url: url)
+                                
+                                break
+                            }
+                        }
+                    }
+                }
+            } else {
+                // Future event
+            }
+        }
     }
 }
