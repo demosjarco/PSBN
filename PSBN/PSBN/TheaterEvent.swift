@@ -122,13 +122,15 @@ class TheaterEvent: UIViewController {
         if segue.identifier == "showPlayer" {
             let player = segue.destination as! AVPlayerViewController
             
-            let playerItem:AVPlayerItem?
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
+            let eventDate = dateFormatter.date(from: self.detailItem!["start_time"] as! String)
             
             // Positive is past
             if Date().timeIntervalSince(eventDate!) > 0 {
                 // Past event
-                if (detail["feed"] != nil) {
-                    let feed = detail["feed"] as! [String: AnyObject]
+                if (self.detailItem!["feed"] != nil) {
+                    let feed = self.detailItem!["feed"] as! [String: AnyObject]
                     
                     if (feed["data"] != nil) {
                         let data = feed["data"] as! [[String: AnyObject]]
@@ -138,13 +140,14 @@ class TheaterEvent: UIViewController {
                                 let data2 = feedItem["data"] as! [String: AnyObject]
                                 
                                 var url = ""
-                                if data2["secure_progressive_url"] {
+                                if (data2["secure_progressive_url"] != nil) {
                                     url = data2["secure_progressive_url"] as! String
-                                } else if data2["progressive_url"] {
+                                } else if (data2["progressive_url"] != nil) {
                                     url = data2["progressive_url"] as! String
                                 }
                                 
-                                player.player = AVPlayer(url: url)
+                                player.player = AVPlayer(url: URL(string: url))
+                                player.player?.play()
                                 
                                 break
                             }
