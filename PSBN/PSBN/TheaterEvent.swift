@@ -101,7 +101,7 @@ class TheaterEvent: UIViewController {
         }
     }
     
-    @IBAction func shareButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         let eventTitle = self.detailItem!["full_name"] as! String
         let text = "Watch " + eventTitle + " on PSBN"
         

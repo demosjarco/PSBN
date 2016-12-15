@@ -36,10 +36,10 @@ class TheaterList: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 180
         
-        refresh(sender: self.refreshControl)
+        refresh(self.refreshControl)
     }
     
-    @IBAction func refresh(sender: UIRefreshControl?) {
+    @IBAction func refresh(_ sender: UIRefreshControl?) {
         if sender != nil {
             self.tableView.contentOffset = CGPoint(x: CGFloat(0), y: -sender!.frame.size.height)
         }
@@ -71,18 +71,18 @@ class TheaterList: UITableViewController {
                         let pastEventsData = pastEvents["data"] as! [[String: AnyObject]]
                         countVideos += pastEventsData.count
                         
-                        self.updateRefreshProgress(refresher: sender, countVideos: countVideos, countVideosDone: countVideosDone)
+                        self.updateRefreshProgress(sender, countVideos: countVideos, countVideosDone: countVideosDone)
                         
                         for event in upcomingEventsData {
                             let eventUrl = url + "/events/" + event["id"]!.stringValue
                             AFHTTPSessionManager().get(eventUrl, parameters: nil, progress: nil, success: { (eventTask, eventResponseObject) in
                                 // Parse JSON
                                 let eventJson = eventResponseObject as! [String: AnyObject]
-                                self.parseEvent(event: eventJson)
+                                self.parseEvent(eventJson)
                                 
                                 countVideosDone += 1
                                 
-                                self.updateRefreshProgress(refresher: sender, countVideos: countVideos, countVideosDone: countVideosDone)
+                                self.updateRefreshProgress(sender, countVideos: countVideos, countVideosDone: countVideosDone)
                             }, failure: { (eventTask, eventError) in
                                 if (eventTask != nil) {
                                     let response = eventTask!.response as! HTTPURLResponse
@@ -91,7 +91,7 @@ class TheaterList: UITableViewController {
                                 
                                 countVideosDone += 1
                                 
-                                self.updateRefreshProgress(refresher: sender, countVideos: countVideos, countVideosDone: countVideosDone)
+                                self.updateRefreshProgress(sender, countVideos: countVideos, countVideosDone: countVideosDone)
                             })
                         }
                         
@@ -100,11 +100,11 @@ class TheaterList: UITableViewController {
                             AFHTTPSessionManager().get(eventUrl, parameters: nil, progress: nil, success: { (eventTask, eventResponseObject) in
                                 // Parse JSON
                                 let eventJson = eventResponseObject as! [String: AnyObject]
-                                self.parseEvent(event: eventJson)
+                                self.parseEvent(eventJson)
                                 
                                 countVideosDone += 1
                                 
-                                self.updateRefreshProgress(refresher: sender, countVideos: countVideos, countVideosDone: countVideosDone)
+                                self.updateRefreshProgress(sender, countVideos: countVideos, countVideosDone: countVideosDone)
                             }, failure: { (eventTask, eventError) in
                                 if (eventTask != nil) {
                                     let response = eventTask!.response as! HTTPURLResponse
@@ -113,7 +113,7 @@ class TheaterList: UITableViewController {
                                 
                                 countVideosDone += 1
                                 
-                                self.updateRefreshProgress(refresher: sender, countVideos: countVideos, countVideosDone: countVideosDone)
+                                self.updateRefreshProgress(sender, countVideos: countVideos, countVideosDone: countVideosDone)
                             })
                         }
                     }, failure: { (task, error) in
@@ -129,7 +129,7 @@ class TheaterList: UITableViewController {
         }
     }
     
-    func updateRefreshProgress(refresher: UIRefreshControl?, countVideos: Int, countVideosDone: Int) {
+    func updateRefreshProgress(_ refresher: UIRefreshControl?, countVideos: Int, countVideosDone: Int) {
         let percentage = Int((Float(countVideosDone) / Float(countVideos)) * Float(100))
         refresher?.attributedTitle = NSAttributedString(string: "Loading event " + String(countVideosDone) + " of " + String(countVideos) + " (" + String(percentage) + "% done)", attributes: [NSForegroundColorAttributeName : UIColor(red: CGFloat(213.0/255.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))])
         if countVideosDone == countVideos {
@@ -152,7 +152,7 @@ class TheaterList: UITableViewController {
         }
     }
     
-    func parseEvent(event: [String: AnyObject]) {
+    func parseEvent(_ event: [String: AnyObject]) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSz"
         let eventDate = dateFormatter.date(from: event["start_time"] as! String)
